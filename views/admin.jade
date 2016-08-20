@@ -1,0 +1,44 @@
+//
+   Created by shi on 2016/8/19.
+extends layout
+block content
+    div.container
+        div.row
+            form(class="col s12",action='/api/add',method='post')
+                div.row
+                    div(class="input-field col s8")
+                        input(id="mlink" type="text" class="validate")
+                        label(for="mlink") 网易歌曲链接
+                    div(class="input-field col s4")
+                        button(class="btn waves-effect waves-light",onclick='javascript:loadDetail();',type='button')
+                            i(class="material-icons right") 提交
+                div.divider
+                div.row
+                    div(class="input-field col s12")
+                        input(name='mid',placeholder=" ",id="mid" type="text" class="validate")
+                        label(for="mid") 歌曲ID
+                    div(class="input-field col s12")
+                        input(name='music',placeholder=" ",id="music" type="text" class="validate")
+                        label(for="music") 歌曲名
+                    div(class="input-field col s12")
+                        input(name='artist',placeholder=" ",id="artist" type="text" class="validate")
+                        label(for="artist") 歌手
+                    div(class="input-field col s12")
+                        input(name='album',placeholder=" ",id="album" type="text" class="validate")
+                        label(for="album") 专辑
+                    div(class="input-field col s12")
+                        input(name='cover',placeholder=" ",id="cover" type="text" class="validate")
+                        label(for="cover") 封面
+                    div(class="input-field col s12")
+                        input(name='lyric',id='lyric',type="hidden")
+                        label(for="lyric") 歌词
+                        button(class="btn waves-effect waves-light",onclick='javascript:loadLyric();',type='button') 获取歌词
+                        button(class="btn waves-effect waves-light",onclick='javascript:showLyric();',type='button') 查看歌词
+                    div(class="input-field col s12")
+                        input(name='date',id='date',type="text" class="datepicker")
+                        label(for="date") 日期
+                    div(class="input-field col s12")
+                        textarea(name='intro',id="intro" class="materialize-textarea",placeholder='请输入你想说的内容')
+                        label(for="intro") 介绍
+                    div(class="input-field col s12")
+                        button(class="btn waves-effect waves-light",,type='submit') 添加歌曲

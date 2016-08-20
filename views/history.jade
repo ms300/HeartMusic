@@ -1,0 +1,14 @@
+//
+   Created by shi on 2016/8/19.
+extends layout
+block content
+    div.container
+        div(class="row")
+            -for(var item in json)
+                div(class='col s6 m4 l3')
+                    div(class='wrapper cover-div-small z-depth-2')
+                        div(class='ribbon-wrapper-green')
+                            div(class="ribbon-green") #{json[item].music}
+                        div(class="cover-detail-inside")
+                            a(href='/history/#{json[item].date}')
+                                img(class='cover-img-small',src="#{json[item].cover}")
