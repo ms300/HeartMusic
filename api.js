@@ -151,6 +151,6 @@ exports.getHistory=function(req,res){
 
 function formatLRC(lyric){
     lyric=lyric.replace(/\[.*?\]/g,'<p>');
-    lyric=lyric.replace("\n",'</p>');
+    lyric=lyric.replace(/\r\n/g,'</p>');
     return lyric;
 }
