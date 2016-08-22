@@ -32,12 +32,22 @@ $( document ).ready(function(){
 
 });
 
+//baidu tongji
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?45643bf577372434018b29a1a09afa89";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+
+
 function loadCss(file){
     var cssTag = document.getElementById('loadCss');
     var head = document.getElementsByTagName('head').item(0);
     if(cssTag) head.removeChild(cssTag);
     css = document.createElement('link');
-    css.href = "../stylesheets/"+file+".css";
+    css.href = "/stylesheets/"+file+".css";
     css.rel = 'stylesheet';
     css.type = 'text/css';
     css.id = 'loadCss';
@@ -79,6 +89,10 @@ function loadDetail(){
             $("#artist").val(jdata['songs'][0]['artists'][0]['name']);
             $("#album").val(jdata['songs'][0]['album']['name']);
             $("#cover").val(jdata['songs'][0]['album']['picUrl']);
+            var btn=$('#btnCheck');
+            btn.text('是否下架');
+            btn.removeClass('deep-orange');
+            btn.removeClass('light-green');
         });
     }
 }
@@ -102,5 +116,26 @@ function loadLyric(){
 
 function showLyric(){
     alert($("#lyric").val());
+}
+
+function showisOnline(){
+    var btn=$('#btnCheck');
+    var mid=$('#mid').val();
+    var post_url='/api/song';
+    var json={mid:mid};
+    var post={data:JSON.stringify(json)};//JSON.stringify(json)把json转化成字符串
+    $.post(post_url,post,function(data){
+        //console.log(typeof(data));
+        // console.log(jdata['lrc']['lyric']);
+        if(data==''){
+            btn.text('已经下架');
+            btn.addClass('deep-orange');
+        }else{
+            btn.text('还在架上');
+            btn.addClass('light-green');
+        }
+
+    });
+
 }
 

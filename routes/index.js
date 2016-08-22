@@ -41,6 +41,10 @@ exports.getLyric = function(req, res){
   api.getLyric(req,res);
 };
 
+exports.getSong = function(req, res){
+  api.getSong(req,res);
+};
+
 exports.addMusic = function(req, res){
   api.addMusic(req,res);
 };

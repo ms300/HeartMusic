@@ -33,6 +33,7 @@ app.post('/dologin', routes.dologin);
 app.get('/admin',filter.authorize,routes.admin);
 app.post('/api/detail', routes.getDetail);
 app.post('/api/lyric', routes.getLyric);
+app.post('/api/song', routes.getSong);
 app.post('/api/add', routes.addMusic);
 app.get('/history/:year/:month/:day',routes.index_history);
 // catch 404 and forward to error handler
