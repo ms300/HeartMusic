@@ -37,11 +37,14 @@ app.post('/api/song', routes.getSong);
 app.post('/api/add', routes.addMusic);
 app.get('/history/:year/:month/:day',routes.index_history);
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  /*var err = new Error('Not Found');
-  err.status = 404;*/
-  res.redirect('/404');
-  next(err);
+app.use(function(err,req, res, next) {
+  //var err = new Error('Not Found');
+  if(err.status = 404) {
+    res.status(404);
+    res.redirect('/404');
+  }else {
+    next(err);
+  }
 });
 
 // error handlers
